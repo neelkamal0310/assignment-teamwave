@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <a href="/">&lt- Go to search</a>
+</div>
+{% if prevpage > 0 %}
+    <a href="/results?q={{ query }}&page={{ prevpage }}">prev</a>
+{% endif %}
+{% if has_more %}
+    <a href="/results?q={{ query }}&page={{ nextpage }}">next</a>
+{% endif %}
+<ul>
+    {% for item in response.items %}
+    <li>
+        <a class="q-link" target="_blank" href="{{ item.link }}">{{ item.title }}</a><br/>
+        <span>by</span> <a target="_blank" href="{{ item.owner.link }}">{{ item.owner.display_name }}</a>
+    </li>
+    {%endfor%}
+</ul>
+{% endblock %}

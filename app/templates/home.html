@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if error %}
+    <span style='color: red;'>{{ error }}</span>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="query" id="searchBar">
+    <button type="submit">Search</button>
+</form>
+{% endblock %}
